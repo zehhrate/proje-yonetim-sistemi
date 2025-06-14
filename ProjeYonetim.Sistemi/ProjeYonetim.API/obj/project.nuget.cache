@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "AWAJDM8R3MlE0MkgwdWrJJU4gvyqMf40YIyU3xewN6b3Hf+b1iL9qJ15nDurDVtSB4LGV9PuXRWOsApFI5KG6w==",
+  "success": true,
+  "projectFilePath": "/Users/zehra/Documents/Projelerim/proje-yonetim-sistemi/ProjeYonetim.Sistemi/ProjeYonetim.API/ProjeYonetim.API.csproj",
+  "expectedPackageFiles": [
+    "/Users/zehra/.nuget/packages/microsoft.aspnetcore.openapi/7.0.4/microsoft.aspnetcore.openapi.7.0.4.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

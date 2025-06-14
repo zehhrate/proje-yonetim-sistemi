@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1705.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjeYonetim.Web", "ProjeYonetim.Web\ProjeYonetim.Web.csproj", "{7B0C562F-7B67-4B8C-81D8-C9DF100D096B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjeYonetim.API", "ProjeYonetim.API\ProjeYonetim.API.csproj", "{DD0B01E4-DF19-4181-9134-AC0938FF4A0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B0C562F-7B67-4B8C-81D8-C9DF100D096B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0C562F-7B67-4B8C-81D8-C9DF100D096B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B0C562F-7B67-4B8C-81D8-C9DF100D096B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B0C562F-7B67-4B8C-81D8-C9DF100D096B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD0B01E4-DF19-4181-9134-AC0938FF4A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD0B01E4-DF19-4181-9134-AC0938FF4A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD0B01E4-DF19-4181-9134-AC0938FF4A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD0B01E4-DF19-4181-9134-AC0938FF4A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7362825-3582-4076-97EA-D13F5935956D}
+	EndGlobalSection
+EndGlobal
