@@ -2,17 +2,16 @@
 
 namespace ProjeYonetim.API.Models
 {
-    public class TaskItem
+    public class Project
     {
         public int Id { get; set; }
 
         [Required]
-        public string Title { get; set; }
+        [MaxLength(200)]
+        public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public bool IsCompleted { get; set; } = false;
-
-        public DateTime DueDate { get; set; } // Son teslim tarihi
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }
