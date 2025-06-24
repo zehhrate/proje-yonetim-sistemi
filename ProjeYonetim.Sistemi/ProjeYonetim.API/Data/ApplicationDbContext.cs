@@ -10,7 +10,7 @@ namespace ProjeYonetim.API.Data
         }
 
         // Buraya veritabanında tablo olmasını istediğimiz modelleri ekliyoruz.
-        public DbSet<User> Users { get; set; }
+        public DbSet<AppUser> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<TaskItem> TaskItems { get; set; }
     }

@@ -5,7 +5,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProjeYonetim.API.Data;
 using System.Text;
-using Microsoft.OpenApi.Models; // Bu using'i dosyanın en üstüne ekle
 
 
 var builder = WebApplication.CreateBuilder(args);

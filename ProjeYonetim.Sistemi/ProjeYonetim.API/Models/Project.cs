@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjeYonetim.API.Models
 {
@@ -8,10 +10,15 @@ namespace ProjeYonetim.API.Models
 
         [Required]
         [MaxLength(200)]
-        public string Name { get; set; }
+        public string Name { get; set; } = ""; // Başlangıç değeri ata
 
-        public string Description { get; set; }
+        public string Description { get; set; } = ""; // Başlangıç değeri ata
 
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+
+        public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public AppUser User { get; set; }
     }
 }

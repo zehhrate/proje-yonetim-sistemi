@@ -1,13 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjeYonetim.API.Models
 {
-    public class User
+    public class AppUser // <-- İSİM DEĞİŞTİ
     {
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(100)]
         public string FullName { get; set; }
 
         [Required]
@@ -15,6 +15,8 @@ namespace ProjeYonetim.API.Models
         public string Email { get; set; }
 
         [Required]
-        public string PasswordHash { get; set; } // Şifreyi asla normal metin olarak tutmayacağız.
+        public string PasswordHash { get; set; }
+
+        public ICollection<Project> Projects { get; set; }
     }
 }
