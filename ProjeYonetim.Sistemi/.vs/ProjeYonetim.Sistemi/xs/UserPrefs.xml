@@ -1,17 +1,29 @@
 ﻿<Properties StartupConfiguration="{7B0C562F-7B67-4B8C-81D8-C9DF100D096B}|https">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.ProjeYonetim.API FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../README.md">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProjeYonetim.API/Program.cs">
     <Files>
       <File FileName="../README.md" Line="3" Column="1" />
+      <File FileName="ProjeYonetim.API/Models/User.cs" Line="20" Column="2" />
+      <File FileName="ProjeYonetim.API/Models/Project.cs" Line="17" Column="2" />
+      <File FileName="ProjeYonetim.API/Models/TaskItem.cs" Line="18" Column="2" />
+      <File FileName="ProjeYonetim.API/Data/ApplicationDbContext.cs" Line="17" Column="2" />
+      <File FileName="ProjeYonetim.API/appsettings.json" Line="18" Column="2" />
+      <File FileName="ProjeYonetim.API/Program.cs" Line="17" Column="40" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjeYonetim.Sistemi" expanded="True">
             <Node name="ProjeYonetim.API" expanded="True">
-              <Node name="Dependencies" expanded="True" selected="True">
+              <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
+              <Node name="Data" expanded="True" />
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -19,10 +31,6 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.ProjeYonetim.Web FirstBuild="True" PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
 </Properties>

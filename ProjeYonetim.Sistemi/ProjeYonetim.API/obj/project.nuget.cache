@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "J8SDnzo81z3T9KG5hUqKogNbhyQ+3ifvM6v7BcCmLekE3my2eetL1nK9QkB4t8NPoUi0a3wR31YyNIA+YqW8lQ==",
+  "dgSpecHash": "7XOpObi//eE=",
   "success": true,
   "projectFilePath": "/Users/zehra/Documents/Projelerim/proje-yonetim-sistemi/ProjeYonetim.Sistemi/ProjeYonetim.API/ProjeYonetim.API.csproj",
   "expectedPackageFiles": [
@@ -39,7 +39,10 @@
     "/Users/zehra/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/Users/zehra/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/Users/zehra/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
-    "/Users/zehra/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
+    "/Users/zehra/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/microsoft.netcore.app.ref/7.0.20/microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.20/microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/zehra/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.20/microsoft.netcore.app.host.osx-arm64.7.0.20.nupkg.sha512"
   ],
   "logs": []
 }
