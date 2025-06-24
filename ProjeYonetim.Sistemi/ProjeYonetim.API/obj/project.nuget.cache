@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "7XOpObi//eE=",
+  "dgSpecHash": "xHJV1PQYyR3wu46K97A5K11QxzxWUR5s2hMNi/Z4qRC42TdU9T+kawyCdpdJYJ7igSvVPq04829dIl5Lfp5MLA==",
   "success": true,
   "projectFilePath": "/Users/zehra/Documents/Projelerim/proje-yonetim-sistemi/ProjeYonetim.Sistemi/ProjeYonetim.API/ProjeYonetim.API.csproj",
   "expectedPackageFiles": [
+    "/Users/zehra/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/zehra/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/zehra/.nuget/packages/microsoft.aspnetcore.openapi/7.0.4/microsoft.aspnetcore.openapi.7.0.4.nupkg.sha512",
     "/Users/zehra/.nuget/packages/microsoft.data.sqlite.core/7.0.20/microsoft.data.sqlite.core.7.0.20.nupkg.sha512",
@@ -39,10 +40,7 @@
     "/Users/zehra/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/Users/zehra/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/Users/zehra/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
-    "/Users/zehra/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
-    "/Users/zehra/.nuget/packages/microsoft.netcore.app.ref/7.0.20/microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
-    "/Users/zehra/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.20/microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
-    "/Users/zehra/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.20/microsoft.netcore.app.host.osx-arm64.7.0.20.nupkg.sha512"
+    "/Users/zehra/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }
