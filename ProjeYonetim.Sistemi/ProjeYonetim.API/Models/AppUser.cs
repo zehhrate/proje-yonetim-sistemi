@@ -3,20 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjeYonetim.API.Models
 {
-    public class AppUser // <-- İSİM DEĞİŞTİ
+    public class AppUser
     {
         public int Id { get; set; }
-
-        [Required]
         public string FullName { get; set; }
-
-        [Required]
-        [EmailAddress]
         public string Email { get; set; }
-
-        [Required]
         public string PasswordHash { get; set; }
-
+        // Bu kullanıcının sahip olduğu tüm projeler
         public ICollection<Project> Projects { get; set; }
     }
 }

@@ -1,25 +1,23 @@
 ﻿<Properties StartupConfiguration="{DD0B01E4-DF19-4181-9134-AC0938FF4A0F}|https">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ProjeYonetim.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.ItemProperties.ProjeYonetim.Web PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="ProjeYonetim.API/Controllers/AuthController.cs">
     <Files>
       <File FileName="../README.md" />
-      <File FileName="ProjeYonetim.API/Models/User.cs" Line="16" Column="2" />
+      <File FileName="ProjeYonetim.API/Models/User.cs" Line="22" Column="2" />
       <File FileName="ProjeYonetim.API/Models/TaskItem.cs" />
-      <File FileName="ProjeYonetim.API/Data/ApplicationDbContext.cs" />
-      <File FileName="ProjeYonetim.API/Program.cs" Line="8" Column="1" />
+      <File FileName="ProjeYonetim.API/Data/ApplicationDbContext.cs" Line="13" Column="50" />
+      <File FileName="ProjeYonetim.API/Program.cs" />
       <File FileName="ProjeYonetim.API/appsettings.json" />
       <File FileName="ProjeYonetim.API/Data/ApplicationDbContextFactory.cs" />
       <File FileName="ProjeYonetim.API/DTOs/UserRegisterDto.cs" />
-      <File FileName="ProjeYonetim.API/DTOs/UserLoginDto.cs" Line="1" Column="1" />
-      <File FileName="ProjeYonetim.API/Controllers/AuthController.cs" Line="97" Column="2" />
-      <File FileName="ProjeYonetim.API/Controllers/ProjectsController.cs" Line="35" Column="51" />
-      <File FileName="ProjeYonetim.API/Models/Project.cs" Line="24" Column="2" />
-      <File FileName="ProjeYonetim.API/ProjeYonetim.API.csproj" Line="35" Column="11" />
+      <File FileName="ProjeYonetim.API/DTOs/UserLoginDto.cs" />
+      <File FileName="ProjeYonetim.API/Controllers/AuthController.cs" Line="58" Column="101" />
+      <File FileName="ProjeYonetim.API/Controllers/ProjectsController.cs" Line="25" Column="2" />
+      <File FileName="ProjeYonetim.API/Models/Project.cs" Line="22" Column="42" />
+      <File FileName="ProjeYonetim.API/ProjeYonetim.API.csproj" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,7 +27,9 @@
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="AuthController.cs" selected="True" />
+              </Node>
               <Node name="Data" expanded="True" />
               <Node name="DTOs" expanded="True" />
               <Node name="Models" expanded="True" />
@@ -40,5 +40,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.ProjeYonetim.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
