@@ -9,7 +9,6 @@ namespace ProjeYonetim.API.Models
         public string FullName { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
-        // Bu kullanıcının sahip olduğu tüm projeler
         public ICollection<Project> Projects { get; set; }
     }
 }

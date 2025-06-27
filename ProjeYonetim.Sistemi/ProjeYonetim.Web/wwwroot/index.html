@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Proje Yönetim Sistemi</title>
+    <meta charset="utf-8" />
+    <style>
+        /* Sayfa biraz daha düzgün görünsün diye basit CSS kodları */
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        input, textarea {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #eee;
+        }
+
+        #userInfo {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            margin-top: -1px;
+            padding: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Proje Yönetim Sistemi</h1>
+
+    <!-- KULLANICI BİLGİSİ VE ÇIKIŞ YAP BÖLÜMÜ -->
+    <div id="userInfo">
+        <!-- JavaScript ile doldurulacak -->
+    </div>
+
+    <!-- GİRİŞ FORMU BÖLÜMÜ -->
+    <div id="loginSection">
+        <h2>Giriş Yap</h2>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="E-posta" required /><br />
+            <input type="password" id="loginPassword" placeholder="Şifre" required /><br />
+            <button type="submit">Giriş Yap</button>
+        </form>
+    </div>
+
+    <hr />
+
+    <!-- PROJE YÖNETİMİ BÖLÜMÜ -->
+    <div id="projectsSection" style="display: none;">
+        <h2>Yeni Proje Ekle</h2>
+        <form id="addProjectForm">
+            <input type="text" id="projectName" placeholder="Proje Adı" required /><br />
+            <textarea id="projectDescription" placeholder="Açıklama"></textarea><br />
+            <button type="submit">Proje Ekle</button>
+        </form>
+
+        <hr />
+
+        <h2>Projelerim</h2>
+        <ul id="projectList">
+            <!-- Projeler buraya JavaScript ile eklenecek -->
+        </ul>
+    </div>
+
+    <!-- JavaScript dosyasını sayfanın sonuna ekliyoruz -->
+    <script src="app.js"></script>
+</body>
+</html>

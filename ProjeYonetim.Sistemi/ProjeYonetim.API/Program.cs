@@ -8,6 +8,17 @@ using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:5257")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                      });
+});
 
 // Add services to the container.
 
@@ -82,6 +93,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(MyAllowSpecificOrigins);
 
 // Sıralama önemli: Önce Authentication, sonra Authorization
 app.UseAuthentication();

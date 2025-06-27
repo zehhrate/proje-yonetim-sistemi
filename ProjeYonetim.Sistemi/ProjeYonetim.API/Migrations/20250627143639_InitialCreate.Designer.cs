@@ -11,7 +11,7 @@ using ProjeYonetim.API.Data;
 namespace ProjeYonetim.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250625183738_InitialCreate")]
+    [Migration("20250627143639_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -74,17 +74,21 @@ namespace ProjeYonetim.API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DueDate")
+                    b.Property<DateTime?>("DueDate")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("TaskItems");
                 });
@@ -100,9 +104,25 @@ namespace ProjeYonetim.API.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ProjeYonetim.API.Models.TaskItem", b =>
+                {
+                    b.HasOne("ProjeYonetim.API.Models.Project", "Project")
+                        .WithMany("TaskItems")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("ProjeYonetim.API.Models.AppUser", b =>
                 {
                     b.Navigation("Projects");
+                });
+
+            modelBuilder.Entity("ProjeYonetim.API.Models.Project", b =>
+                {
+                    b.Navigation("TaskItems");
                 });
 #pragma warning restore 612, 618
         }
