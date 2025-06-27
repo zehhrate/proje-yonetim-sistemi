@@ -58,7 +58,7 @@
             const messageDiv = document.getElementById('message');
 
             try {
-                const response = await fetch('https://localhost:5290/api/auth/register', { // API adresini kontrol et
+                const response = await fetch('http://localhost:5190/api/auth/register', { // API adresini kontrol et
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -76,7 +76,7 @@
                     messageDiv.classList.add('alert-success');
                     messageDiv.textContent = 'Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...';
                     setTimeout(() => {
-                        window.location.href = '/login.html'; // Kayıt başarılıysa giriş sayfasına yönlendir
+                        window.location.href = '/'; // Kayıt başarılıysa giriş sayfasına yönlendir
                     }, 2000);
                 } else {
                     const errorData = await response.text();

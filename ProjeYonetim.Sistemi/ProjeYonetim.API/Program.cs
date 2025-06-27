@@ -14,11 +14,13 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:5257")
+                          // Sadece frontend'imizin çalıştığı adrese izin veriyoruz.
+                          policy.WithOrigins("http://localhost:8000")
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
                       });
 });
+
 
 // Add services to the container.
 
