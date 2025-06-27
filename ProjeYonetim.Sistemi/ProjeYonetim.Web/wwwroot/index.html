@@ -1,37 +1,45 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <title>Proje Yönetim Sistemi</title>
     <meta charset="utf-8" />
+    <title>Proje Yönetim Sistemi</title>
     <style>
-        /* Sayfa biraz daha düzgün görünsün diye basit CSS kodları */
         body {
-            font-family: sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
             padding: 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
+            background-color: #f4f4f9;
         }
 
-        input, textarea {
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        input, textarea, button {
+            font-size: 1em;
+            padding: 10px;
             margin-bottom: 10px;
-            padding: 8px;
-            width: 300px;
             border: 1px solid #ccc;
             border-radius: 4px;
-        }
-
-        textarea {
-            height: 80px;
-            resize: vertical;
+            width: calc(100% - 22px);
         }
 
         button {
-            padding: 10px 15px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 4px;
             cursor: pointer;
+            width: auto;
+            padding: 10px 20px;
         }
 
             button:hover {
@@ -39,14 +47,10 @@
             }
 
         hr {
-            margin: 30px 0;
             border: 0;
-            border-top: 1px solid #eee;
-        }
-
-        #userInfo {
-            margin-bottom: 20px;
-            font-size: 1.1em;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
         }
 
         ul {
@@ -55,51 +59,76 @@
         }
 
         li {
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            margin-top: -1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 12px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+            li:nth-child(odd) {
+                background-color: #f9f9f9;
+            }
+
+        #userInfo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
         }
     </style>
+
 </head>
 <body>
-    <h1>Proje Yönetim Sistemi</h1>
+    <div class="container">
+        <h1>Proje Yönetim Sistemi</h1>
 
-    <!-- KULLANICI BİLGİSİ VE ÇIKIŞ YAP BÖLÜMÜ -->
-    <div id="userInfo">
-        <!-- JavaScript ile doldurulacak -->
+        <div id="userInfo"></div>
+
+        <div id="loginSection">
+            <h2>Giriş Yap</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="E-posta" required />
+                <input type="password" id="loginPassword" placeholder="Şifre" required />
+                <button type="submit">Giriş Yap</button>
+            </form>
+            <!-- YENİ EKLENEN KISIM -->
+            <p class="mt-3" style="margin-top: 15px;">
+                Hesabın yok mu? <a href="register.html">Hemen Üye Ol</a>
+            </p>
+        </div>
+
+        <div id="projectsSection" style="display: none;">
+            <hr>
+            <h3>Yeni Proje Ekle</h3>
+            <form id="addProjectForm">
+                <input type="text" id="projectName" placeholder="Proje Adı" required />
+                <textarea id="projectDescription" placeholder="Açıklama" rows="3"></textarea>
+                <button type="submit">Proje Ekle</button>
+            </form>
+
+            <div id="updateProjectSection" style="display: none;">
+                <hr>
+                <h3>Projeyi Güncelle</h3>
+                <form id="updateProjectForm">
+                    <input type="hidden" id="updateProjectId" />
+                    <input type="text" id="updateProjectName" placeholder="Proje Adı" required />
+                    <textarea id="updateProjectDescription" placeholder="Açıklama" rows="3"></textarea>
+                    <button type="submit">Değişiklikleri Kaydet</button>
+                    <button type="button" id="cancelUpdateButton">İptal</button>
+                </form>
+            </div>
+
+            <hr>
+            <h2>Projelerim</h2>
+            <ul id="projectList"></ul>
+        </div>
     </div>
 
-    <!-- GİRİŞ FORMU BÖLÜMÜ -->
-    <div id="loginSection">
-        <h2>Giriş Yap</h2>
-        <form id="loginForm">
-            <input type="email" id="loginEmail" placeholder="E-posta" required /><br />
-            <input type="password" id="loginPassword" placeholder="Şifre" required /><br />
-            <button type="submit">Giriş Yap</button>
-        </form>
-    </div>
-
-    <hr />
-
-    <!-- PROJE YÖNETİMİ BÖLÜMÜ -->
-    <div id="projectsSection" style="display: none;">
-        <h2>Yeni Proje Ekle</h2>
-        <form id="addProjectForm">
-            <input type="text" id="projectName" placeholder="Proje Adı" required /><br />
-            <textarea id="projectDescription" placeholder="Açıklama"></textarea><br />
-            <button type="submit">Proje Ekle</button>
-        </form>
-
-        <hr />
-
-        <h2>Projelerim</h2>
-        <ul id="projectList">
-            <!-- Projeler buraya JavaScript ile eklenecek -->
-        </ul>
-    </div>
-
-    <!-- JavaScript dosyasını sayfanın sonuna ekliyoruz -->
     <script src="app.js"></script>
 </body>
 </html>
