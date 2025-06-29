@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProjeYonetim.API.Data;
-using ProjeYonetim.API.Middleware;
+using ProjeYonetim.API.Middleware; // Hata yönetimi için bu using gerekli
 using Serilog;
 using Serilog.Events;
 using System.Security.Claims;
@@ -25,19 +25,20 @@ try
     var builder = WebApplication.CreateBuilder(args);
 
     // Serilog'u ASP.NET Core loglama sistemine entegre et
-    builder.Host.UseSerilog((context, configuration) =>
-        configuration.ReadFrom.Configuration(context.Configuration));
+    builder.Host.UseSerilog((context, services, configuration) => configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Services(services)
+        .Enrich.FromLogContext());
 
     // --- SERVİSLER ---
 
     // 1. CORS Politikasını Tanımla
-    var frontendOrigin = "http://localhost:8000";
     builder.Services.AddCors(options =>
     {
         options.AddPolicy(name: "AllowFrontend",
                           policy =>
                           {
-                              policy.WithOrigins(frontendOrigin)
+                              policy.WithOrigins("http://localhost:8000")
                                     .AllowAnyHeader()
                                     .AllowAnyMethod();
                           });
@@ -59,8 +60,8 @@ try
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value)),
-            ValidateIssuer = false, // Geliştirme için basitleştirildi
-            ValidateAudience = false, // Geliştirme için basitleştirildi
+            ValidateIssuer = false,
+            ValidateAudience = false,
             RoleClaimType = ClaimTypes.Role
         };
     });
@@ -115,21 +116,12 @@ try
         app.UseSwaggerUI();
     }
 
-    // app.UseHttpsRedirection(); // Frontend http olduğu için bu kapalı kalmalı
+    // app.UseHttpsRedirection(); // Frontend http olduğu için kapalı
 
-    // 3. Routing'i etkinleştir (CORS'tan önce!)
     app.UseRouting();
-
-    // 4. CORS politikasını uygula
     app.UseCors("AllowFrontend");
-
-    // 5. Kimlik doğrulama
     app.UseAuthentication();
-
-    // 6. Yetkilendirme
     app.UseAuthorization();
-
-    // 7. Endpoint'leri haritala
     app.MapControllers();
 
     app.Run();
@@ -140,5 +132,6 @@ catch (Exception ex)
 }
 finally
 {
+    Log.Information(">>> Uygulama Kapatılıyor.");
     Log.CloseAndFlush();
 }

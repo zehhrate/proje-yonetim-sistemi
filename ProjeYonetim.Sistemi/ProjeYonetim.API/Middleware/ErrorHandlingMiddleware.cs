@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
@@ -11,42 +12,39 @@ namespace ProjeYonetim.API.Middleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ErrorHandlingMiddleware> _logger;
+        private readonly IHostEnvironment _env;
 
-        public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger)
+        public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger, IHostEnvironment env)
         {
             _next = next;
             _logger = logger;
+            _env = env;
         }
 
         public async Task InvokeAsync(HttpContext context)
         {
             try
             {
-                // İstek boru hattındaki bir sonraki middleware'i çağır.
-                // Eğer hata olmazsa, bu metot normal şekilde tamamlanır.
                 await _next(context);
             }
             catch (Exception ex)
             {
-                // Eğer boru hattının herhangi bir yerinde bir hata oluşursa,
-                // catch bloğu çalışır.
-
-                // 1. Hatayı logla.
                 _logger.LogError(ex, "Beklenmedik bir hata oluştu: {Message}", ex.Message);
 
-                // 2. Kullanıcıya döneceğimiz cevabı hazırla.
                 var response = context.Response;
                 response.ContentType = "application/json";
-                response.StatusCode = (int)HttpStatusCode.InternalServerError; // 500 kodu
+                response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                // 3. Kullanıcıya gösterilecek temiz hata mesajı.
+                // Geliştirme ortamındaysak detaylı hata mesajı, değilsek genel mesaj gösterelim.
                 var result = JsonSerializer.Serialize(new
                 {
                     statusCode = response.StatusCode,
-                    message = "Sunucuda beklenmedik bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+                    message = _env.IsDevelopment()
+                        ? $"Internal Server Error: {ex.Message}"
+                        : "Sunucuda beklenmedik bir hata oluştu.",
+                    details = _env.IsDevelopment() ? ex.StackTrace?.ToString() : null
                 });
 
-                // 4. Cevabı kullanıcıya gönder.
                 await response.WriteAsync(result);
             }
         }

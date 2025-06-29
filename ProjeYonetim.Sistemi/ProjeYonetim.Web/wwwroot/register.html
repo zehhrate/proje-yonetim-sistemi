@@ -58,7 +58,7 @@
             const messageDiv = document.getElementById('message');
 
             try {
-                const response = await fetch('http://localhost:5190/api/auth/register', { // API adresini kontrol et
+                const response = await fetch('http://localhost:5190/api/v1/auth/register', { // API adresini kontrol et
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
