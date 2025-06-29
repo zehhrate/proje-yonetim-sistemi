@@ -9,12 +9,14 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Asp.Versioning;
 
 
 namespace ProjeYonetim.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")] // ROTA GÜNCELLENDİ
     [ApiController]
+    [ApiVersion("1.0")] // VERSİYON EKLENDİ
     [Authorize]
     public class ProjectsController : ControllerBase
     {
@@ -31,8 +33,12 @@ namespace ProjeYonetim.API.Controllers
             // Bu kodda async/await yok, bu doğru.
             return int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
         }
+        [HttpGet("test-error")]
+        public IActionResult TestError()
+        {
+            throw new Exception("Bu, bilerek fırlatılan bir test hatasıdır!");
+        }
 
-    
         // GET: api/projects/5
         // GET: api/projects
         [HttpGet]

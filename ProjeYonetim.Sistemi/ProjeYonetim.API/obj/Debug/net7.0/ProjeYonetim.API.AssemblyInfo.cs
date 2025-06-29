@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjeYonetim.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b3511e0f39e2e9b8fcc91b2e8ef15a2331269474")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac3a07db8e4fba6425c4ab655fe75fa8e5a9034d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjeYonetim.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjeYonetim.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

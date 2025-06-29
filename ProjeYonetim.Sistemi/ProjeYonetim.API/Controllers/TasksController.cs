@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjeYonetim.API.Data;
@@ -11,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace ProjeYonetim.API.Controllers
 {
-    [Route("api/projects/{projectId}/tasks")]
+    [Route("api/v{version:apiVersion}/projects/{projectId}/tasks")]
     [ApiController]
     [Authorize]
+    [ApiVersion("1.0")]
     public class TasksController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

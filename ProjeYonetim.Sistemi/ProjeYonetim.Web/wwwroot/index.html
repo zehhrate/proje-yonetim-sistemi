@@ -3,132 +3,133 @@
 <head>
     <meta charset="utf-8" />
     <title>Proje Yönetim Sistemi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 900px;
-            margin: auto;
-            background-color: #f4f4f9;
-        }
-
-        h1, h2, h3 {
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8f9fa;
         }
 
         .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 900px;
         }
 
-        input, textarea, button {
-            font-size: 1em;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: calc(100% - 22px);
+        .project-item, .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
+        .project-link {
+            text-decoration: none;
+            font-weight: 500;
             cursor: pointer;
-            width: auto;
-            padding: 10px 20px;
         }
 
-            button:hover {
-                background-color: #0056b3;
+            .project-link:hover {
+                text-decoration: underline;
             }
 
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ddd;
-            margin: 20px 0;
+        .task-title {
+            margin-left: 10px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
-
-            li:nth-child(odd) {
-                background-color: #f9f9f9;
+            .task-title.completed {
+                text-decoration: line-through;
+                color: #6c757d;
             }
-
-        #userInfo {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #e7f3ff;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
     </style>
-
 </head>
-<body>
-    <div class="container">
-        <h1>Proje Yönetim Sistemi</h1>
+<body class="py-4">
+    <div class="container bg-white p-4 rounded shadow-sm">
+        <div id="userInfo" class="d-flex justify-content-between align-items-center mb-4"></div>
 
-        <div id="userInfo"></div>
+        <!-- Sadece Giriş Yapıldığında Görünür -->
+        <main id="mainContent" style="display:none;">
+            <!-- Projeler Bölümü -->
+            <section id="projectsView">
+                <h3>Yeni Proje Ekle</h3>
+                <form id="addProjectForm" class="mb-4">
+                    <input type="text" id="projectName" class="form-control mb-2" placeholder="Proje Adı" required />
+                    <textarea id="projectDescription" class="form-control mb-2" placeholder="Açıklama" rows="3"></textarea>
+                    <button type="submit" class="btn btn-primary">Proje Ekle</button>
+                </form>
 
-        <div id="loginSection">
+                <div id="updateProjectSection" style="display: none;" class="mb-4">
+                    <hr>
+                    <h3>Projeyi Güncelle</h3>
+                    <form id="updateProjectForm">
+                        <input type="hidden" id="updateProjectId" />
+                        <input type="text" id="updateProjectName" class="form-control mb-2" placeholder="Proje Adı" required />
+                        <textarea id="updateProjectDescription" class="form-control mb-2" placeholder="Açıklama" rows="3"></textarea>
+                        <button type="submit" class="btn btn-success">Değişiklikleri Kaydet</button>
+                        <button type="button" id="cancelUpdateButton" class="btn btn-secondary">İptal</button>
+                    </form>
+                </div>
+
+                <hr>
+                <h2>Projelerim</h2>
+                <ul id="projectList" class="list-group"></ul>
+            </section>
+
+            <!-- Görevler Bölümü -->
+            <section id="tasksView" style="display:none;">
+                <button id="backToProjects" class="btn btn-secondary mb-3">← Projelere Geri Dön</button>
+                <h3 id="projectNameForTasks"></h3>
+
+                <h4 class="mt-4">Yeni Görev Ekle</h4>
+                <form id="addTaskForm" class="mb-4">
+                    <input type="hidden" id="currentProjectId" />
+                    <input type="text" id="taskTitle" class="form-control mb-2" placeholder="Görev Başlığı" required />
+                    <textarea id="taskDescription" class="form-control mb-2" placeholder="Açıklama" rows="2"></textarea>
+                    <button type="submit" class="btn btn-primary">Görev Ekle</button>
+                </form>
+
+                <hr>
+
+                <!-- ... tasksView div'inin içinde, <h4>Görevler</h4>'den önce ... -->
+
+                <div id="updateTaskSection" style="display: none;" class="my-4 p-3 border rounded bg-light">
+                    <hr>
+                    <h4>Görevi Güncelle</h4>
+                    <form id="updateTaskForm">
+                        <input type="hidden" id="updateTaskId" />
+                        <input type="hidden" id="updateTaskProjectId" />
+                        <div class="mb-2">
+                            <label for="updateTaskTitle" class="form-label">Başlık</label>
+                            <input type="text" id="updateTaskTitle" class="form-control" required />
+                        </div>
+                        <div class="mb-2">
+                            <label for="updateTaskDescription" class="form-label">Açıklama</label>
+                            <textarea id="updateTaskDescription" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label for="updateTaskDueDate" class="form-label">Son Teslim Tarihi</label>
+                            <input type="date" id="updateTaskDueDate" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-success">Kaydet</button>
+                        <button type="button" id="cancelUpdateTaskButton" class="btn btn-secondary">İptal</button>
+                    </form>
+                </div>
+                <h4>Görevler</h4>
+
+                <ul id="taskList" class="list-group"></ul>
+            </section>
+        </main>
+
+        <!-- Sadece Giriş Yapılmadığında Görünür -->
+        <section id="loginSection">
             <h2>Giriş Yap</h2>
             <form id="loginForm">
-                <input type="email" id="loginEmail" placeholder="E-posta" required />
-                <input type="password" id="loginPassword" placeholder="Şifre" required />
-                <button type="submit">Giriş Yap</button>
+                <input type="email" id="loginEmail" class="form-control mb-2" placeholder="E-posta" required />
+                <input type="password" id="loginPassword" class="form-control mb-2" placeholder="Şifre" required />
+                <button type="submit" class="btn btn-primary w-100">Giriş Yap</button>
             </form>
-            <!-- YENİ EKLENEN KISIM -->
-            <p class="mt-3" style="margin-top: 15px;">
+            <p class="mt-3 text-center">
                 Hesabın yok mu? <a href="register.html">Hemen Üye Ol</a>
             </p>
-        </div>
-
-        <div id="projectsSection" style="display: none;">
-            <hr>
-            <h3>Yeni Proje Ekle</h3>
-            <form id="addProjectForm">
-                <input type="text" id="projectName" placeholder="Proje Adı" required />
-                <textarea id="projectDescription" placeholder="Açıklama" rows="3"></textarea>
-                <button type="submit">Proje Ekle</button>
-            </form>
-
-            <div id="updateProjectSection" style="display: none;">
-                <hr>
-                <h3>Projeyi Güncelle</h3>
-                <form id="updateProjectForm">
-                    <input type="hidden" id="updateProjectId" />
-                    <input type="text" id="updateProjectName" placeholder="Proje Adı" required />
-                    <textarea id="updateProjectDescription" placeholder="Açıklama" rows="3"></textarea>
-                    <button type="submit">Değişiklikleri Kaydet</button>
-                    <button type="button" id="cancelUpdateButton">İptal</button>
-                </form>
-            </div>
-
-            <hr>
-            <h2>Projelerim</h2>
-            <ul id="projectList"></ul>
-        </div>
+        </section>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>

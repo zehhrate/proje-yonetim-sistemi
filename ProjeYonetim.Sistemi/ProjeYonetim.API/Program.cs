@@ -1,106 +1,144 @@
-﻿// Gerekli tüm using'ler
+﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProjeYonetim.API.Data;
+using ProjeYonetim.API.Middleware;
+using Serilog;
+using Serilog.Events;
+using System.Security.Claims;
 using System.Text;
 
+// Serilog'un ilk yapılandırması
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File("logs/ProjeYonetimApiLog-.txt", rollingInterval: RollingInterval.Day)
+    .CreateBootstrapLogger();
 
-var builder = WebApplication.CreateBuilder(args);
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-builder.Services.AddCors(options =>
+try
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          // Sadece frontend'imizin çalıştığı adrese izin veriyoruz.
-                          policy.WithOrigins("http://localhost:8000")
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-                      });
-});
+    Log.Information(">>> Uygulama Başlatılıyor...");
 
+    var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+    // Serilog'u ASP.NET Core loglama sistemine entegre et
+    builder.Host.UseSerilog((context, configuration) =>
+        configuration.ReadFrom.Configuration(context.Configuration));
 
-// 1. DbContext servisini ekle
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    // --- SERVİSLER ---
 
-// 2. Authentication (Kimlik Doğrulama) servisini ekle
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
+    // 1. CORS Politikasını Tanımla
+    var frontendOrigin = "http://localhost:8000";
+    builder.Services.AddCors(options =>
     {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value)),
-        ValidateIssuer = true,
-        ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
-        ValidateAudience = true,
-        ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value
-    };
-});
-
-// 3. Diğer servisler
-builder.Services.AddControllers();
-
-// ... (diğer kodlar)
-
-builder.Services.AddEndpointsApiExplorer();
-
-// YENİ SWAGGER YAPILANDIRMASI
-builder.Services.AddSwaggerGen(options =>
-{
-    // 1. Güvenlik tanımını ekle (JWT Bearer şeması)
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        In = ParameterLocation.Header,
-        Description = "Lütfen token'ı 'Bearer {token}' formatında girin",
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
+        options.AddPolicy(name: "AllowFrontend",
+                          policy =>
+                          {
+                              policy.WithOrigins(frontendOrigin)
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+                          });
     });
 
-    // 2. Güvenlik gereksinimini ekle (Bu tanımı tüm endpoint'lere uygula)
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    // 2. DbContext
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+    // 3. Authentication
+    builder.Services.AddAuthentication(options =>
     {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value)),
+            ValidateIssuer = false, // Geliştirme için basitleştirildi
+            ValidateAudience = false, // Geliştirme için basitleştirildi
+            RoleClaimType = ClaimTypes.Role
+        };
     });
-});
 
+    // 4. Controller'lar
+    builder.Services.AddControllers();
 
-var app = builder.Build();
+    // 5. API Versiyonlama
+    builder.Services.AddApiVersioning(options =>
+    {
+        options.DefaultApiVersion = new ApiVersion(1, 0);
+        options.AssumeDefaultVersionWhenUnspecified = true;
+        options.ReportApiVersions = true;
+        options.ApiVersionReader = new UrlSegmentApiVersionReader();
+    }).AddApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'VVV";
+        options.SubstituteApiVersionInUrl = true;
+    });
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    builder.Services.AddEndpointsApiExplorer();
+
+    // 6. Swagger
+    builder.Services.AddSwaggerGen(options =>
+    {
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Description = "Token'ı 'Bearer {token}' formatında girin",
+            Name = "Authorization",
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
+        });
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement {
+            { new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } }, new string[] {} }
+        });
+    });
+
+    var app = builder.Build();
+
+    // --- MIDDLEWARE PİPELİNE (Sıralama Çok Önemli!) ---
+
+    // 1. Kendi özel Hata Yakalayıcımız (her şeyden önce olmalı)
+    app.UseMiddleware<ErrorHandlingMiddleware>();
+
+    // 2. Serilog ile istekleri loglama
+    app.UseSerilogRequestLogging();
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    // app.UseHttpsRedirection(); // Frontend http olduğu için bu kapalı kalmalı
+
+    // 3. Routing'i etkinleştir (CORS'tan önce!)
+    app.UseRouting();
+
+    // 4. CORS politikasını uygula
+    app.UseCors("AllowFrontend");
+
+    // 5. Kimlik doğrulama
+    app.UseAuthentication();
+
+    // 6. Yetkilendirme
+    app.UseAuthorization();
+
+    // 7. Endpoint'leri haritala
+    app.MapControllers();
+
+    app.Run();
 }
-
-app.UseHttpsRedirection();
-app.UseCors(MyAllowSpecificOrigins);
-
-// Sıralama önemli: Önce Authentication, sonra Authorization
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+catch (Exception ex)
+{
+    Log.Fatal(ex, ">>> Uygulama başlatılırken ölümcül bir hata oluştu!");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

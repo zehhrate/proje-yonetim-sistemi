@@ -1,48 +1,58 @@
 ﻿<Properties StartupConfiguration="{7B0C562F-7B67-4B8C-81D8-C9DF100D096B}|https">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.ProjeYonetim.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProjeYonetim.API/Controllers/TasksController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ProjeYonetim.API/Controllers/AuthController.cs">
     <Files>
       <File FileName="../README.md" />
-      <File FileName="ProjeYonetim.API/Models/TaskItem.cs" Line="17" Column="2" />
+      <File FileName="ProjeYonetim.API/Models/TaskItem.cs" />
       <File FileName="ProjeYonetim.API/Data/ApplicationDbContext.cs" />
-      <File FileName="ProjeYonetim.API/Program.cs" />
+      <File FileName="ProjeYonetim.API/Program.cs" Line="75" Column="44" />
       <File FileName="ProjeYonetim.API/appsettings.json" />
       <File FileName="ProjeYonetim.API/Data/ApplicationDbContextFactory.cs" />
       <File FileName="ProjeYonetim.API/DTOs/UserRegisterDto.cs" />
       <File FileName="ProjeYonetim.API/DTOs/UserLoginDto.cs" />
-      <File FileName="ProjeYonetim.API/Controllers/AuthController.cs" />
-      <File FileName="ProjeYonetim.API/Controllers/ProjectsController.cs" Line="69" Column="10" />
-      <File FileName="ProjeYonetim.API/Models/Project.cs" Line="19" Column="2" />
+      <File FileName="ProjeYonetim.API/Controllers/AuthController.cs" Line="121" Column="14" />
+      <File FileName="ProjeYonetim.API/Controllers/ProjectsController.cs" />
+      <File FileName="ProjeYonetim.API/Models/Project.cs" />
       <File FileName="ProjeYonetim.API/ProjeYonetim.API.csproj" />
       <File FileName="ProjeYonetim.API/DTOs/ProjectCreateDto.cs" />
-      <File FileName="ProjeYonetim.API/Models/AppUser.cs" Line="14" Column="2" />
-      <File FileName="ProjeYonetim.API/DTOs/TaskCreateDto.cs" Line="12" Column="2" />
-      <File FileName="ProjeYonetim.API/DTOs/TaskUpdateDto.cs" Line="13" Column="2" />
-      <File FileName="ProjeYonetim.API/Controllers/TasksController.cs" Line="118" Column="2" />
+      <File FileName="ProjeYonetim.API/Models/AppUser.cs" />
+      <File FileName="ProjeYonetim.API/DTOs/TaskCreateDto.cs" />
+      <File FileName="ProjeYonetim.API/DTOs/TaskUpdateDto.cs" />
+      <File FileName="ProjeYonetim.API/Controllers/TasksController.cs" />
+      <File FileName="ProjeYonetim.Web/Program.cs" />
+      <File FileName="ProjeYonetim.Web/wwwroot/index.html" />
+      <File FileName="ProjeYonetim.Web/wwwroot/app.js" />
+      <File FileName="ProjeYonetim.API/Controllers/TestController.cs" />
+      <File FileName="ProjeYonetim.Web/wwwroot/register.html" />
+      <File FileName="ProjeYonetim.API/Properties/launchSettings.json" />
+      <File FileName="ProjeYonetim.API/Middleware/ErrorHandlingMiddleware.cs" />
+      <File FileName="ProjeYonetim.API/Migrations/20250629133425_FinalVersion.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ProjeYonetim.Sistemi" expanded="True">
             <Node name="ProjeYonetim.API" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="TasksController.cs" selected="True" />
-              </Node>
+              <Node name="Dependencies" expanded="True" selected="True" />
+              <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="DTOs" expanded="True" />
+              <Node name="logs" expanded="True" />
+              <Node name="Middleware" expanded="True" />
+              <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.ProjeYonetim.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.ItemProperties.ProjeYonetim.Web PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

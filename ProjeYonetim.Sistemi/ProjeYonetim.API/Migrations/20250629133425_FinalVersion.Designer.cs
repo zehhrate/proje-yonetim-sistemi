@@ -11,8 +11,8 @@ using ProjeYonetim.API.Data;
 namespace ProjeYonetim.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250627143639_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250629133425_FinalVersion")]
+    partial class FinalVersion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,9 @@ namespace ProjeYonetim.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Role")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
