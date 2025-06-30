@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{7B0C562F-7B67-4B8C-81D8-C9DF100D096B}|https">
-  <MonoDevelop.Ide.ItemProperties.ProjeYonetim.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ProjeYonetim.Web/wwwroot/app.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../README.md">
     <Files>
-      <File FileName="../README.md" />
+      <File FileName="../README.md" Line="3" Column="1" />
       <File FileName="ProjeYonetim.API/Models/TaskItem.cs" />
       <File FileName="ProjeYonetim.API/Data/ApplicationDbContext.cs" />
       <File FileName="ProjeYonetim.API/Program.cs" />
@@ -22,7 +20,7 @@
       <File FileName="ProjeYonetim.API/Controllers/TasksController.cs" />
       <File FileName="ProjeYonetim.Web/Program.cs" />
       <File FileName="ProjeYonetim.Web/wwwroot/index.html" />
-      <File FileName="ProjeYonetim.Web/wwwroot/app.js" Line="17" Column="49" />
+      <File FileName="ProjeYonetim.Web/wwwroot/app.js" />
       <File FileName="ProjeYonetim.Web/wwwroot/register.html" />
       <File FileName="ProjeYonetim.API/Properties/launchSettings.json" />
       <File FileName="ProjeYonetim.API/Middleware/ErrorHandlingMiddleware.cs" />
@@ -33,7 +31,7 @@
         <State name="__root__">
           <Node name="ProjeYonetim.Sistemi" expanded="True">
             <Node name="ProjeYonetim.API" expanded="True">
-              <Node name="Dependencies" expanded="True" selected="True">
+              <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
               <Node name="Controllers" expanded="True" />
@@ -45,6 +43,9 @@
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
             </Node>
+            <Node name="ProjeYonetim.API.Tests" expanded="True">
+              <Node name="Dependencies" selected="True" />
+            </Node>
             <Node name="ProjeYonetim.Web" expanded="True">
               <Node name="wwwroot" expanded="True" />
             </Node>
@@ -53,10 +54,13 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.ProjeYonetim.API.Tests FirstBuild="True" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.ProjeYonetim.API PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
   <MonoDevelop.Ide.ItemProperties.ProjeYonetim.Web PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

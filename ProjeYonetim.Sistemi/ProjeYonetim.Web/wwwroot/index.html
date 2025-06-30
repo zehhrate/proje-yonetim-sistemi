@@ -41,7 +41,6 @@
     <div class="container bg-white p-4 rounded shadow-sm">
         <h1 class="mb-4">Proje Yönetim Sistemi</h1>
         <div id="userInfo" class="p-3 mb-4 bg-light rounded"></div>
-
         <!-- SADECE GİRİŞ YAPILMADIĞINDA GÖRÜNÜR -->
         <section id="loginSection">
             <h2>Giriş Yap</h2>
@@ -87,12 +86,14 @@
                 <hr>
                 <h2>Projelerim</h2>
                 <ul id="projectList" class="list-group"></ul>
+
             </section>
 
             <!-- Görevler Görünümü (Gizli) -->
             <section id="tasksView" style="display:none;">
                 <button id="backToProjects" class="btn btn-secondary mb-3">← Projelere Geri Dön</button>
                 <h3 id="projectNameForTasks"></h3>
+                <p id="projectDescriptionForTasks" class="text-muted border-start border-4 border-info ps-3 mb-4"></p>
 
                 <h4 class="mt-4">Yeni Görev Ekle</h4>
                 <form id="addTaskForm" class="mb-4">

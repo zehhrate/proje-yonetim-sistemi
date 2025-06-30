@@ -10,6 +10,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Security.Claims;
 using Asp.Versioning;
+using ProjeYonetim.API.DTOs;
+
 
 
 namespace ProjeYonetim.API.Controllers
@@ -42,17 +44,19 @@ namespace ProjeYonetim.API.Controllers
         // GET: api/projects/5
         // GET: api/projects
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
+        public async Task<ActionResult<IEnumerable<Project>>> GetProjects([FromQuery] PaginationDto paginationDto)
         {
-            // 1. İstek yapan kullanıcının ID'sini al.
             var userId = GetUserId();
 
-            // 2. Veritabanından, sadece bu kullanıcıya ait olan projeleri seç.
-            var projects = await _context.Projects
-                                         .Where(p => p.UserId == userId)
-                                         .ToListAsync();
+            var query = _context.Projects
+                                .Where(p => p.UserId == userId)
+                                .AsQueryable();
 
-            // 3. Bulunan projeleri kullanıcıya geri dön.
+            var projects = await query
+                                  .Skip((paginationDto.PageNumber - 1) * paginationDto.PageSize)
+                                  .Take(paginationDto.PageSize)
+                                  .ToListAsync();
+
             return Ok(projects);
         }
         // GET: api/projects/5
